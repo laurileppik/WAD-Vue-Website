@@ -1,2 +1,19 @@
-# WAD-Vue-Website
-This is a repository for a website of University of Tartu's course Web Application Development.
+# wadproject
+
+## Project setup
+```
+npm install
+```
+
+### Compiles and hot-reloads for development
+```
+npm run serve
+```
+
+### Compiles and minifies for production
+```
+npm run build
+```
+
+### Customize configuration
+See [Configuration Reference](https://cli.vuejs.org/config/).
