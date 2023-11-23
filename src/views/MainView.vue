@@ -1,5 +1,6 @@
 <template>
   <div class="main-view">
+    <button @click="resetAllLikes">Reset All Likes</button>
     <div class="content">
       <Post v-for="post in posts" :key="post.id" :post="post" />
     </div>
@@ -19,6 +20,9 @@ export default {
   },
   methods: {
     ...mapActions(['fetchPosts']),
+    resetAllLikes() {
+        this.$store.commit('resetLikes');
+      },
   },
   created() {
     this.fetchPosts();

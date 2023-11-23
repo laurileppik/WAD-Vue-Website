@@ -76,6 +76,11 @@ export default createStore({
       }],
   },
   mutations: {
+    resetLikes(state) {
+      state.posts.forEach(post => {
+        post.likes = 0;
+      });
+    },
     
   },
   actions: {
