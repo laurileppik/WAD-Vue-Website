@@ -14,23 +14,33 @@
         <img class="post-image" :src="require(`@/assets/${post.image}`)" alt="Post Image">
       </div>
       <p class="post-body">{{ post.body }}</p>
-      <div class="like">
+      <div class="like" @click="incrementLikes">
         <img src="@/assets/fblike.jpeg" alt="Like Image" width="25" height="25">
+        <span>{{ post.likes }}</span>
       </div>
     </div>
   </template>
+  
   
   <script>
   export default {
     props: {
       post: Object,
     },
+    methods: {
+      incrementLikes() {
+        this.post.likes++;
+      },
+    },
     mounted() {
-    console.log('post.image:', this.post.image);
-  },
+      console.log('post.image:', this.post.image);
+      if (this.post.likes === undefined) {
+        this.$set(this.post, 'likes', 0);
+      }
+    },
   };
-  
   </script>
+  
   
   <style scoped>
 .post {
