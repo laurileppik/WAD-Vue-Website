@@ -1,9 +1,9 @@
 <template>
   <div class="main-view">
-    <button @click="resetAllLikes">Reset All Likes</button>
     <div class="content">
       <Post v-for="post in posts" :key="post.id" :post="post" />
     </div>
+    <button @click="resetAllLikes">Reset All Likes</button>
   </div>
 </template>
 
