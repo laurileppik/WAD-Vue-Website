@@ -15,8 +15,8 @@
       </div>
       <p class="post-body">{{ post.body }}</p>
       <div class="like" @click="incrementLikes">
-        <img src="@/assets/fblike.jpeg" alt="Like Image" width="25" height="25">
-        <span>{{ post.likes }}</span>
+        <img src="@/assets/fblike.png" alt="Like Image" width="20" height="20">
+        <span>&nbsp;{{ post.likes }}</span>
       </div>
     </div>
   </template>
@@ -74,9 +74,10 @@
   max-height: 100%;
 }
 
-
-
 .post-body {
+  display: flex;
+  text-align: justify;
+  justify-content: flex-start;
   font-size: 16px;
   line-height: 1.5;
   word-wrap: break-word;
@@ -85,7 +86,10 @@
 }
 
 .like {
+  display: flex;
+  justify-content: flex-end;
   margin-top: 10px;
+  font-size: 20px;
   cursor: pointer;
 }
 

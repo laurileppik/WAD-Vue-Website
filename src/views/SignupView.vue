@@ -4,11 +4,11 @@
     <form @submit.prevent="submitForm">
       <div class="form-group">
         <label for="email">Email:</label>
-        <input type="email" id="email" v-model="email" required />
+        <input class="field" type="email" id="email" v-model="email" required />
       </div>
       <div class="form-group">
         <label for="password">Password:</label>
-        <input type="password" id="password" v-model="password" @input="validatePassword" required />
+        <input class="field" type="password" id="password" v-model="password" @input="validatePassword" required />
         <p v-if="!isPasswordValid" class="error-message">
           Password is not valid. Please follow these conditions:
           <ul style="list-style-type: none; padding: 0;">
@@ -28,7 +28,9 @@
 
 <script>
 export default {
+
   data() {
+
     return {
       email: '',
       password: '',
@@ -40,18 +42,22 @@ export default {
       hasUnderscore: false,
       hasCorrectLength: false,
     };
+
   },
+
   methods: {
+
     submitForm() {
       if (this.isPasswordValid) {
         // Redirect to the main page if all conditions are met
         this.$router.push('/');
       }
     },
+
     validatePassword() {
       const regex = /^(?=.*[A-Z])(?=.*[a-z].*[a-z])(?=.*\d)(?=.*_)[A-Z].{7,14}$/;
       this.hasUppercase = /[A-Z]/.test(this.password);
-      this.hasLowercase = /[a-z]/.test(this.password);
+      this.hasLowercase = this.minimumTwoLowercase();
       this.hasNumeric = /\d/.test(this.password);
       this.startsWithUppercase = /^[A-Z]/.test(this.password);
       this.hasUnderscore = /_/.test(this.password);
@@ -59,11 +65,31 @@ export default {
 
       this.isPasswordValid = regex.test(this.password);
     },
-  },
+
+    minimumTwoLowercase() {
+      var lowercaseCnt = 0;
+      for (let i = 0; i < this.password.length; i++) { 
+        if(this.password[i] == this.password[i].toLowerCase() && this.password[i] != this.password[i].toUpperCase()){
+          lowercaseCnt++;
+        }
+      }
+      if(lowercaseCnt > 1){
+        return true;
+      }
+      return false;
+    },
+
+  }
+
 };
 </script>
 
 <style scoped>
+
+.field {
+  width:400px;
+}
+
 .signup {
   text-align: center;
   margin-top: 20px;
