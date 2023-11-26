@@ -4,7 +4,7 @@
     <form @submit.prevent="submitForm">
       <div class="form-group">
         <label for="email">Email:</label>
-        <input class="field" type="email" id="email" v-model="email" required />
+              <input class="field" type="email" id="email" v-model="email" required />
       </div>
       <div class="form-group">
         <label for="password">Password:</label>
@@ -87,7 +87,8 @@ export default {
 <style scoped>
 
 .field {
-  width:400px;
+  width: 100%;
+  max-width:400px;
 }
 
 .signup {
