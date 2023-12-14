@@ -18,6 +18,7 @@
             <li v-if="!startsWithUppercase">Start with an uppercase alphabet.</li>
             <li v-if="!hasUnderscore">Include the character “_”.</li>
             <li v-if="!hasCorrectLength">At least 8 characters and less than 15 characters.</li>
+            <p v-if="errorMessage" class="error-message">{{ errorMessage }}</p>
           </ul>
         </p>
       </div>
@@ -41,6 +42,7 @@ export default {
       startsWithUppercase: false,
       hasUnderscore: false,
       hasCorrectLength: false,
+      errorMessage: "error",
     };
 
   },
@@ -48,11 +50,41 @@ export default {
   methods: {
 
     submitForm() {
-      if (this.isPasswordValid) {
-        // Redirect to the main page if all conditions are met
-        this.$router.push('/');
+  if (this.isPasswordValid) {
+    // Create an object with the form data
+    const data = {
+      email: this.email,
+      password: this.password,
+    };
+
+    // Send a POST request to the server
+    fetch('http://localhost:3000/signup', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(data),
+    })
+    .then(response => {
+      if (!response.ok) {
+        // If the server responds with a status code outside the range 200-299,
+        // throw an error with the status text (e.g., 'User already exists')
+        throw new Error(response.statusText);
       }
-    },
+      return response.json();
+    })
+    .then(data => {
+      console.log('Success:', data);
+      // Redirect to the main page if the request was successful
+      this.$router.push('/');
+    })
+    .catch((error) => {
+      // Display the error message to the user
+      this.errorMessage = error.message;
+      console.error('Error:', error);
+    });
+  }
+},
 
     validatePassword() {
       const regex = /^(?=.*[A-Z])(?=.*[a-z].*[a-z])(?=.*\d)(?=.*_)[A-Z].{7,14}$/;
