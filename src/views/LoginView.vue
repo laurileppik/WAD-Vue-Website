@@ -26,13 +26,11 @@ export default {
     },
     methods: {
         submitForm() {
-            // Create an object with the form data
             const data = {
                 email: this.email,
                 password: this.password,
             };
 
-            // Send a POST request to the server
             fetch('http://localhost:3000/login', {
                 method: 'POST',
                 headers: {
@@ -62,7 +60,6 @@ export default {
                     console.error('Error:', error);
                 });
         }, goToSignup() {
-            // Redirect to the signup page
             this.$router.push('/signup');
         },
 

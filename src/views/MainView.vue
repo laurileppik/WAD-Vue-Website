@@ -1,10 +1,11 @@
 <template>
   <div class="main-view">
+    <button @click="logout">Logout</button>
     <div class="content">
       <Post v-for="post in posts" :key="post.id" :post="post" />
     </div>
-    <button @click="resetAllLikes">Reset All Likes</button>
-    <button @click="logout">Logout</button>
+    <button @click="resetAllLikes">Add post</button>
+    <button @click="deleteAllPosts">Delete all posts</button>
   </div>
 </template>
 
@@ -25,7 +26,36 @@ export default {
     // Map the userId from the Vuex store to a local computed property
     ...mapState(['userId']),
   },
+
   methods: {
+    deleteAllPosts() {
+      const data = {
+        id: this.userId,
+      };
+      console.log(this.userId);
+      fetch('http://localhost:3000/api/deleteposts', {
+        method: 'DELETE',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(data),
+      })
+        .then(response => {
+          if (!response.ok) {
+            throw new Error('Network response was not ok');
+          }
+          return response.json();
+        })
+        .then(data => {
+          console.log('Success:', data);
+
+          // Redirect to the main page without posts if the request was successful
+          this.fetchPosts(this.userId);
+        })
+        .catch((error) => {
+          console.error('Error:', error);
+        });
+    },
 
     async fetchPosts(userId) {
       const response = await fetch(`http://localhost:3000/api/posts?userId=${userId}`);
@@ -59,10 +89,14 @@ export default {
       }
     },
   },
+
   created() {
     console.log('User ID from store:', this.userId);
-    if (this.userId != undefined && this.userId!=null) {
+    //Maybe change this to be if it is an integer fetch because currently not ideal.
+    if (this.userId != undefined && this.userId != null) {
       this.fetchPosts(this.userId);
+    } else {
+      this.$router.push({ name: 'login' });
     }
     //this.fetchPosts(this.userId);
 

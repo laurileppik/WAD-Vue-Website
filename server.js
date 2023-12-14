@@ -4,6 +4,8 @@ const cors = require('cors');
 const bcrypt = require('bcrypt');
 const cookieParser = require('cookie-parser');
 const jwt = require('jsonwebtoken');
+const { use } = require('bcrypt/promises');
+const { user } = require('pg/lib/defaults');
 
 const port = process.env.PORT || 3000;
 
@@ -120,6 +122,24 @@ app.post('/login', async (req, res) => {
         res.status(401).json({ error: error.message });
     }
 });
+//DELETE FROM POSTS WHERE USERID=$1
+
+app.delete('/api/deleteposts', async (req, res) => {
+    try {
+      console.log("a delete all posts request has arrived");
+      const { id } = req.body;
+      console.log("userid " + id);
+      const posts = await pool.query('DELETE FROM posts WHERE userid=$1', [id]);
+      res.json(posts.rows);
+    } catch (err) {
+      console.error(err.message);
+      res.status(500).send('Server error');
+    }
+  });
+
+
+
+
 
 app.get('/api/posts', async (req, res) => {
     try {
