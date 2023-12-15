@@ -22,7 +22,7 @@ const execute = async(query) => {
 const createPostsTable = `
 CREATE TABLE IF NOT EXISTS "posts" (
     userid integer NOT NULL, 
-    createtime timestamp without time zone NOT NULL, 
+    createtime date NOT NULL, 
     id SERIAL PRIMARY KEY NOT NULL, 
     likes integer DEFAULT 0, 
     body text NOT NULL);
@@ -38,7 +38,7 @@ execute(createPostsTable).then(result => {
 const createUsersTable = `
 CREATE TABLE IF NOT EXISTS "users" (
     id SERIAL PRIMARY KEY NOT NULL,
-    email character varying(255) NOT NULL,
+    email character varying(255) NOT NULL UNIQUE,
     password character varying(255) NOT NULL);
     `;
 
