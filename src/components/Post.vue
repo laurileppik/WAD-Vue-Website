@@ -7,17 +7,17 @@
           </div>
         </div>
         <div class="right">
-          <p>{{ post.createTime }}</p>
+          <p>{{ post.createtime }}</p>
         </div>
       </div>
       <div v-if="post && post.image">
         <img class="post-image" :src="require(`@/assets/${post.image}`)" alt="Post Image">
       </div>
       <p class="post-body">{{ post.body }}</p>
-      <div class="like" @click="incrementLikes">
+      <!--<div class="like" @click="incrementLikes">
         <img src="@/assets/fblike.png" alt="Like Image" width="20" height="20">
         <span>&nbsp;{{ post.likes }}</span>
-      </div>
+      </div>-->
     </div>
   </template>
   
@@ -33,7 +33,6 @@
       },
     },
     mounted() {
-      console.log('post.image:', this.post.image);
       if (this.post.likes === undefined) {
         this.$set(this.post, 'likes', 0);
       }
@@ -51,6 +50,7 @@
   padding: 15px;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   max-width: 60%;
+  cursor: pointer;
 }
 
 .poster {

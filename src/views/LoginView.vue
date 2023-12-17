@@ -66,4 +66,42 @@ export default {
     },
 };
 </script>
-  
+
+<style scoped>
+.field {
+  width: 100%;
+  max-width: 400px;
+}
+
+.login {
+  text-align: center;
+  margin-top: 20px;
+}
+
+.form-group {
+  margin-bottom: 15px;
+}
+
+label {
+  display: block;
+  margin-bottom: 5px;
+}
+
+input {
+  padding: 8px;
+  width: 100%;
+  box-sizing: border-box;
+  margin-bottom: 10px;
+}
+
+button {
+  padding: 10px;
+  background-color: #3498db;
+  color: #fff;
+  border: none;
+  cursor: pointer;
+  margin-right: 10px;
+}
+
+</style>
+

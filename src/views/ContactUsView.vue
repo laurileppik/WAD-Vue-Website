@@ -1,5 +1,5 @@
 <template>
     <footer>
-      <p>&copy; 2023 Budget Facebook. All rights reserved.</p>
+      <p>Contact us at: +372 5555 5555</p>
     </footer>
   </template>

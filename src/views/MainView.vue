@@ -49,9 +49,9 @@ export default {
 
         if (selectedPost && selectedPost.length > 0 && selectedPost[0].id) {
           this.$router.push({
-          name: 'postview',
-          params: { postId: selectedPost[0].id },
-        });
+            name: 'postview',
+            params: { postId: selectedPost[0].id },
+          });
 
           console.log('After router.push');
         } else {
@@ -99,7 +99,18 @@ export default {
         throw new Error(`HTTP error! status: ${response.status}`);
       }
       this.posts = await response.json();
+      console.log('Received Posts:', JSON.parse(JSON.stringify(this.posts)));
+
+      this.posts.forEach(post => {
+        if (post.createtime) {
+          const date = new Date(post.createtime);
+          post.createtime = date.toLocaleDateString('en-US', { year: 'numeric', month: '2-digit', day: '2-digit' });
+        }
+      });
+
+      console.log('Modified Posts:', JSON.parse(JSON.stringify(this.posts)));
     },
+
 
     resetAllLikes() {
       this.posts.forEach(post => {
@@ -140,8 +151,20 @@ export default {
 };
 </script>
 
-<style>
+<style scoped>
 .main-view {
   padding-bottom: 40px;
+  text-align: center;
 }
+
+button {
+  padding: 10px;
+  background-color: #3498db;
+  color: #fff;
+  border: none;
+  cursor: pointer;
+  margin: 5px;
+}
+
 </style>
+
