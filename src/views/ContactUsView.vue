@@ -26,7 +26,8 @@ Silicon Valley, USA
     padding: 2rem;
     margin: 2rem 15rem;
     border-radius: 1.5rem;
-
+    border-style: solid;
+    border-width: 1px;
   }
 
 

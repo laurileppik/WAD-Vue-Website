@@ -3,7 +3,9 @@
       <div class="poster">
         <div class="left">
           <div class="image">
+            <div class="pfpCircle">
             <img src="@/assets/hmt.gif" alt="My picture" width="35" height="35">
+          </div>
           </div>
         </div>
         <div class="right">
@@ -83,6 +85,12 @@
   word-wrap: break-word;
   overflow-wrap: break-word;
   overflow: hidden;
+  background-color: white;
+  padding: 1rem;
+  border-radius: 1rem;
+  border-color: black;
+  border-width: 1px;
+  border-style: solid;
 }
 
 .like {
@@ -91,6 +99,12 @@
   margin-top: 10px;
   font-size: 20px;
   cursor: pointer;
+}
+
+.pfpCircle {
+  background-color: whitesmoke;
+  border-radius: 2rem;
+  padding: 0.2rem;
 }
 
 </style>

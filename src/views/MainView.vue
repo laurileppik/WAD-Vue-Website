@@ -1,11 +1,11 @@
 <template>
   <div class="main-view">
-    <button @click="logout">Logout</button>
+    <button class="logout" @click="logout">Logout</button>
     <div class="content">
       <Post v-for="post in posts" :key="post.id" :post="post" @click="redirectToPostView(post.id)" />
     </div>
-    <button @click="redirectAddPostView">Add post</button>
-    <button @click="deleteAllPosts">Delete all posts</button>
+    <button class="addpost" @click="redirectAddPostView">Add post</button>
+    <button class="deletepost" @click="deleteAllPosts">Delete all posts</button>
   </div>
 </template>
 
@@ -165,6 +165,20 @@ button {
   cursor: pointer;
   margin: 5px;
 }
+
+.logout {
+  margin: 1rem;
+  border-radius: 1.5rem;
+}
+
+.addpost {
+  border-radius: 1.5rem;
+}
+
+.deletepost {
+  border-radius: 1.5rem;
+}
+
 
 </style>
 
