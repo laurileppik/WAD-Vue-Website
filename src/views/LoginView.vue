@@ -11,7 +11,7 @@
                 <input class="field" type="password" id="password" v-model="password" required />
             </div>
             <button type="submit">Login</button>
-            <button type="button" @click="goToSignup">Go to Signup</button>
+            <button type="button" @click="goToSignup">Go to sign up</button>
         </form>
     </div>
 </template>
@@ -76,6 +76,14 @@ export default {
 .login {
   text-align: center;
   margin-top: 20px;
+  cursor: pointer;
+  border: 1px solid #ccc;
+  padding: 10px;
+  margin: 10px;
+  margin-left: 15rem;
+  margin-right: 15rem;
+  background-color: #f0f0f0;
+  border-radius: 0.5rem;
 }
 
 .form-group {

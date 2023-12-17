@@ -12,6 +12,7 @@
     background-color: gainsboro;
     padding: 10px;
     text-align: center;
+    border-radius: 0.5rem;
   }
   
   nav {

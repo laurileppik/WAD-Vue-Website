@@ -1,14 +1,14 @@
 <template>
   <div class="main-wrapper">
     <div class="sidebar-left"></div>
-  <div class="main-view">
-    <button class="logout" @click="logout">Logout</button>
-    <div class="content">
-      <Post v-for="post in posts" :key="post.id" :post="post" @click="redirectToPostView(post.id)" />
-    </div>
-    <button class="addpost" @click="redirectAddPostView">Add post</button>
-    <button class="deletepost" @click="deleteAllPosts">Delete all posts</button>
-    </div>
+    <div class="main-view">
+      <button class="logout" @click="logout">Logout</button>
+      <div class="content">
+        <Post v-for="post in posts" :key="post.id" :post="post" @click="redirectToPostView(post.id)" />
+      </div>
+      <button class="addpost" @click="redirectAddPostView">Add post</button>
+      <button class="deletepost" @click="deleteAllPosts">Delete all posts</button>
+      </div>
     <div class="sidebar-right"></div>
   </div>
 </template>
@@ -171,7 +171,7 @@ export default {
   width: 20%;
   background-color: gainsboro;
   margin-top: 2rem;
-  border-radius: 1rem;
+  border-radius: 0.5rem;
   margin-bottom: 3rem;
 }
 
@@ -194,15 +194,15 @@ button {
 
 .logout {
   margin: 1rem;
-  border-radius: 1.5rem;
+  border-radius: 0.5rem;
 }
 
 .addpost {
-  border-radius: 1.5rem;
+  border-radius: 0.5rem;
 }
 
 .deletepost {
-  border-radius: 1.5rem;
+  border-radius: 0.5rem;
 }
 
 

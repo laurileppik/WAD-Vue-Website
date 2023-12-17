@@ -22,7 +22,7 @@
         </ul>
         </p>
       </div>
-      <button type="submit" :disabled="!isPasswordValid">Signup</button>
+      <button type="submit" :disabled="!isPasswordValid">Sign up</button>
     </form>
   </div>
 </template>
@@ -121,6 +121,14 @@ export default {
 .signup {
   text-align: center;
   margin-top: 20px;
+  cursor: pointer;
+  border: 1px solid #ccc;
+  padding: 10px;
+  margin: 10px;
+  margin-left: 15rem;
+  margin-right: 15rem;
+  background-color: #f0f0f0;
+  border-radius: 0.5rem;
 }
 
 .form-group {

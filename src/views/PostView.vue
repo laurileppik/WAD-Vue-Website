@@ -45,11 +45,13 @@ export default {
         .then(response => {
           if (!response.ok) {
             throw new Error('Network response was not ok');
+
           }
           return response.json();
         })
         .then(data => {
           console.log('Success:', data);
+          this.$router.push('/');
         })
         .catch((error) => {
           console.error('Error:', error);
@@ -90,6 +92,8 @@ export default {
   border: 1px solid #ccc;
   padding: 10px;
   margin: 10px;
+  margin-left: 15rem;
+  margin-right: 15rem;
   background-color: #f0f0f0;
 }
 

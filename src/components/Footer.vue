@@ -11,11 +11,12 @@
     text-align: center;
     position: fixed;
     bottom: 0;
+    border-radius: 0.5rem;
     width: 100%;
   }
   
   p {
     margin: 0;
-    color: black;
+    color: blac100
   }
   </style>

@@ -87,7 +87,7 @@
   overflow: hidden;
   background-color: white;
   padding: 1rem;
-  border-radius: 1rem;
+  border-radius: 0.5rem;
   border-color: black;
   border-width: 1px;
   border-style: solid;

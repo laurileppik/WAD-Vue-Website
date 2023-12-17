@@ -67,6 +67,7 @@ export default {
   padding: 10px;
   margin: 10px;
   background-color: #f0f0f0;
+  border-radius: 0.5rem;
 }
 
 .post h2 {
@@ -90,7 +91,7 @@ export default {
   background-color: #d2e7d6;
   margin: 3rem;
   padding: 1rem;
-  border-radius: 1.5rem;
+  border-radius: 0.5rem;
 }
 .body {
   display: flex;
@@ -102,7 +103,7 @@ export default {
   justify-content: center;
   gap: 3rem;
   background-color: #b8d8be;
-  border-radius: 1.5rem;
+  border-radius: 0.5rem;
 }
 .txtarea {
   border-radius: 0.5rem
@@ -110,7 +111,7 @@ export default {
 
 .addPost {
   width: 6rem;
-  border-radius: 1rem;
+  border-radius: 0.5rem;
 }
 </style>
 
