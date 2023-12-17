@@ -74,6 +74,7 @@ export default {
         })
         .then(data => {
           console.log('Success:', data);
+          this.$router.push({ name: 'home' });
         })
         .catch((error) => {
           console.error('Error:', error);
@@ -83,12 +84,13 @@ export default {
 };
 </script>
 
-<style>
+<style scoped>
 .post {
   cursor: pointer;
   border: 1px solid #ccc;
   padding: 10px;
   margin: 10px;
+  background-color: #f0f0f0;
 }
 
 .post h2 {
@@ -96,6 +98,11 @@ export default {
 }
 
 .post button {
+  padding: 10px;
+  background-color: #3498db;
+  color: #fff;
+  border: none;
+  cursor: pointer;
   margin-right: 5px;
 }
 
@@ -103,3 +110,5 @@ export default {
   margin-top: 5px;
 }
 </style>
+
+

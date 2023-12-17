@@ -168,6 +168,28 @@ app.delete('/api/deleteposts', async (req, res) => {
   });
 
 
+  app.post('/api/newpost', async (req, res) => {
+    try {
+      console.log("a new post request has arrived");
+      const { newPost,userid } = req.body;
+      console.log("post " + newPost);
+      console.log(userid);
+
+      const currentTime = new Date().toISOString();
+      console.log(currentTime);
+
+      const createdPost = await pool.query(
+        'INSERT INTO posts (userid, createtime, likes, body) VALUES ($1, $2, $3, $4) RETURNING *',
+        [userid, currentTime, 0, newPost]
+      );
+
+      res.json(createdPost.rows[0]);
+    } catch (err) {
+      console.error(err.message);
+      res.status(500).send('Server error');
+    }
+  });
+
 
   app.get('/api/post/', async (req, res) => {
     try {
