@@ -1,13 +1,15 @@
 <template>
     <div class="post">
+      <div class="postText">
         <h2>Add Post</h2>
-        <div>
+        <div class="body">
             <h3>Body</h3>
-            <textarea v-model="newPostBody" rows="4" cols="50"></textarea>
+            <textarea class="txtarea" placeholder="Write your post here!" v-model="newPostBody" rows="4" cols="50"></textarea>
         </div>
         <div>
-            <button @click="addPost">Add</button>
+            <button class="addPost" @click="addPost">Add</button>
         </div>
+      </div>
     </div>
 </template>
   
@@ -64,7 +66,7 @@ export default {
   border: 1px solid #ccc;
   padding: 10px;
   margin: 10px;
-  background-color: #f0f0f0; 
+  background-color: #f0f0f0;
 }
 
 .post h2 {
@@ -82,6 +84,33 @@ export default {
 
 .post textarea {
   margin-top: 5px;
+}
+
+.postText {
+  background-color: #d2e7d6;
+  margin: 3rem;
+  padding: 1rem;
+  border-radius: 1.5rem;
+}
+.body {
+  display: flex;
+  margin:2rem;
+  margin-left: 15rem;
+  margin-right: 15rem;
+  padding: 2rem;
+  align-items: center;
+  justify-content: center;
+  gap: 3rem;
+  background-color: #b8d8be;
+  border-radius: 1.5rem;
+}
+.txtarea {
+  border-radius: 0.5rem
+}
+
+.addPost {
+  width: 6rem;
+  border-radius: 1rem;
 }
 </style>
 
