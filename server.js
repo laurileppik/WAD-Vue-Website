@@ -137,8 +137,51 @@ app.delete('/api/deleteposts', async (req, res) => {
     }
   });
 
+  app.delete('/api/deletepost', async (req, res) => {
+    try {
+      console.log("a delete post request has arrived");
+      const { id } = req.body;
+      console.log("postid " + id);
+      const posts = await pool.query('DELETE FROM posts WHERE id=$1', [id]);
+      res.json(posts.rows);
+    } catch (err) {
+      console.error(err.message);
+      res.status(500).send('Server error');
+    }
+  });
+
+  app.post('/api/updatepost', async (req, res) => {
+    try {
+      console.log("an update post request has arrived");
+      const { id,newPost } = req.body;
+      console.log("postid " + id);
+      console.log("post " + newPost);
+      const updatedPost = await pool.query(
+        'UPDATE posts SET body = $1 WHERE id = $2 RETURNING *',
+        [newPost, id]
+      );
+      res.json(updatedPost.rows[0]);
+    } catch (err) {
+      console.error(err.message);
+      res.status(500).send('Server error');
+    }
+  });
 
 
+
+  app.get('/api/post/', async (req, res) => {
+    try {
+      const { postId } = req.query;
+      console.log("id" + postId);
+      const posts = await pool.query('SELECT * FROM posts WHERE id = $1', [postId]);
+      //console.log(posts);
+      res.json(posts.rows);
+    } catch (err) {
+      console.log(postId);
+      console.error(err.message);
+      res.status(500).send('Server error');
+    }
+  });
 
 
 app.get('/api/posts', async (req, res) => {

@@ -3,6 +3,8 @@ import MainView from '../views/MainView.vue'
 import SignupView from '../views/SignupView.vue'
 import LoginView from '../views/LoginView.vue'
 import ContactUsView from '../views/ContactUsView.vue'
+import PostView from '../views/PostView.vue';
+import AddPostView from '../views/AddPostView.vue';
 
 
 const routes = [
@@ -22,7 +24,15 @@ const routes = [
     path: '/contact',
     name: 'contact',
     component: ContactUsView
-  }
+  },{
+    path: '/postview/:postId',
+    name: 'postview',
+    component: PostView,
+  },{
+    path: '/addPostView',
+    name: 'addPostView',
+    component: AddPostView,
+  },
 ]
 
 const router = createRouter({

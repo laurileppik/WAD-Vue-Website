@@ -2,9 +2,9 @@
   <div class="main-view">
     <button @click="logout">Logout</button>
     <div class="content">
-      <Post v-for="post in posts" :key="post.id" :post="post" />
+      <Post v-for="post in posts" :key="post.id" :post="post" @click="redirectToPostView(post.id)" />
     </div>
-    <button @click="resetAllLikes">Add post</button>
+    <button @click="redirectAddPostView">Add post</button>
     <button @click="deleteAllPosts">Delete all posts</button>
   </div>
 </template>
@@ -28,6 +28,42 @@ export default {
   },
 
   methods: {
+    redirectAddPostView() {
+      this.$router.push({ name: 'addPostView' });
+    },
+
+    async redirectToPostView(postId) {
+      try {
+        console.log("postID", postId);
+        const apiUrl = `http://localhost:3000/api/post?postId=${postId}`;
+        console.log("API URL:", apiUrl);
+        const response = await fetch(apiUrl);
+
+        if (!response.ok) {
+          throw new Error(`HTTP error! status: ${response.status}`);
+        }
+        const selectedPost = await response.json();
+
+        console.log('Server Response:', response);
+        console.log('Selected Post:', selectedPost);
+
+        if (selectedPost && selectedPost.length > 0 && selectedPost[0].id) {
+          this.$router.push({
+          name: 'postview',
+          params: { postId: selectedPost[0].id },
+        });
+
+          console.log('After router.push');
+        } else {
+          console.error('Invalid post data:', selectedPost);
+        }
+      } catch (error) {
+        console.error('Error fetching post:', error.message);
+      }
+    },
+
+
+
     deleteAllPosts() {
       const data = {
         id: this.userId,
