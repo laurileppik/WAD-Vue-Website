@@ -1,5 +1,33 @@
 <template>
     <footer>
-      <p>Contact us at: +372 5555 5555</p>
+      <div class="contact">
+      <h1>Contact us</h1>
+      <div class="info">
+      <p>Phone: +372 5555 5555</p>
+      <p>E-mail: budgetfb@bfb.com</p>
+      <p>Address: 1234 Innovation Avenue
+Techville, SV 98765
+Silicon Valley, USA
+</p>
+</div>
+    </div>
     </footer>
   </template>
+
+<style scoped>
+  .contact {
+    margin-top: 2rem;
+    padding: 2rem;
+    background-color: gainsboro;
+  }
+
+  .info {
+    background-color: #b8d8be;
+    padding: 2rem;
+    margin: 2rem 15rem;
+    border-radius: 1.5rem;
+
+  }
+
+
+</style>
