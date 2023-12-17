@@ -1,4 +1,6 @@
 <template>
+  <div class="main-wrapper">
+    <div class="sidebar-left"></div>
   <div class="main-view">
     <button class="logout" @click="logout">Logout</button>
     <div class="content">
@@ -6,6 +8,8 @@
     </div>
     <button class="addpost" @click="redirectAddPostView">Add post</button>
     <button class="deletepost" @click="deleteAllPosts">Delete all posts</button>
+    </div>
+    <div class="sidebar-right"></div>
   </div>
 </template>
 
@@ -155,6 +159,28 @@ export default {
 .main-view {
   padding-bottom: 40px;
   text-align: center;
+  flex: 1;
+}
+
+.main-wrapper {
+  display: flex;
+}
+
+.sidebar-left,
+.sidebar-right {
+  width: 20%;
+  background-color: gainsboro;
+  margin-top: 2rem;
+  border-radius: 1rem;
+  margin-bottom: 3rem;
+}
+
+.sidebar-left {
+  margin-left: 1rem;
+}
+
+.sidebar-right {
+  margin-right: 1rem;
 }
 
 button {
